@@ -1,0 +1,18 @@
+Entity ID	Domains	Entity Name	IRI	MoSCoW	Related Entity ID	Related Entity Name	Relationship	Reciprocal	Show ID In Label	Facet Group	Facet Value	Notes	Description
+	Facilities Management	a/c					blank						Air Conditioning.
+	Facilities Management	abrafac					blank						Brazilian Association of Facilities. A non-profit organisation founded in 2004.
+	Facilities Management	access					blank						Approach, entry, internal circulation or exit, including in cases of emergency.
+	Facilities Management	accessible					blank						Capable of being accessed and used by disabled people.
+	Facilities Management	activity based working (abw)				activity	is_related_to						The reorganisation of the workplace to enable staff to be more productive and collaborative through the use of shared workspaces in the office and external locations like home offices.
+	Facilities Management	adaptability					blank						Possibility of changing characteristics such as volume, function or space in order to meet new demands or needs.
+	Facilities Management	AIWFM					blank						Post nominal for Associate member of IWFM.
+	Facilities Management	application programme interface (api)					blank						A set of routines, protocols and tools for building software applications that specify clearly defined methods of communication between various software components.
+	Facilities Management	APS					blank						Association for Project Safety.
+	Facilities Management	ARP					blank						Activity resumption plan.
+	Facilities Management	artificial intelligence (ai)					blank						The theory and development of computer systems able to perform tasks normally requiring human intelligence, such as visual perception, speech recognition, decision making and translation between languages.
+	Facilities Management	as built information					blank						Expression of the design, its working detail, construction works and/or installations, functions, operations and maintenance needs of a facility in a form suitable for use in managing that facility.
+	Facilities Management	ashrae					blank						American Society of Heating, Refrigeration and Air Conditioning Engineers.
+	Facilities Management	asset cost breakdown				asset	is_related_to						Itemisation of the capital cost of a facility asset in terms of its constituent parts.
+	Facilities Management	asset management				asset	is_related_to						A process of proactively managing a buildings assets to ensure maximum efficiency and return on capital investment.
+	Facilities Management	attachment					is_related_to						In this context, a file that is sent along with an e-mail message. ASCII (plain text) files may be appended to the message text, but other types of files are encoded and sent separately (common formats that can be selected include MIME, BinHex, and Uuencode).
+	Facilities Management	authentication					blank						The process of identifying yourself and the verification that you're who you say you are. Computers where restricted information is stored may require you to enter your username and password to gain access.

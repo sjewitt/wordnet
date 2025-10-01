@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="/static/styles.css"/>
+		<meta charset="UTF-8">
+		<title>Wordnet</title>
+	</head>
+	<body data-js-context="home">
+	<h1>Wordnet</h1>
+
+	<ul>
+		<li class="active"><a href="/">Home</a></li>
+		<li><a href="/synsets">Synsets for single word</a></li>
+		<li><a href="/synset_similarity">Compare synsets for two words</a></li>
+		<li><a href="/phrase_compare">Compare phrases</a></li>
+		<li><a href="/get_related_phrases">Related phrases</a></li>
+	</ul>
+	<div class="content">
+	<h1>API endpoints</h1>
+	
+	<h2>Wordnet synset tests</h2>
+	<ul>
+		<li><a href="/api/" title="Just the start page...">/api/</a>The root of the API namespace</li>
+		<li><a href="/api/synsets?word=fish" title="get synsets for word">/api/synsets?word=fish</a>Get synsets for word</li>
+		<li><a href="/api/synsets?synset_name=aquatic_vertebrate.n.01" title="get synset details for supplied name">/api/synsets?synset_name=aquatic_vertebrate.n.0</a>get synset details for supplied name</li>
+		<li><a href="/api/synset?synset_name=aquatic_vertebrate.n.01" title="">/api/synset?synset_name=aquatic_vertebrate.n.01</a>Same as above</li>
+		<li><a href="/api/synset?synset_name=aquatic_vertebrate.n.01&summary=true" title="synset summary">/api/synset?synset_name=aquatic_vertebrate.n.01&summary=true</a>get a summary only</li>
+		<li><a href="/api/synset_count?word=fish" title="synset count for supplied word">/api/synset_count?word=fish</a>Synset count for supplied word</li>
+		<li><a href="/api/synsets_pair_summary?word1=fish&word2=mammal" title="synset compare for supplied words">/api/synsets_pair_summary?word1=fish&word2=mammal</a>Synset compare for supplied words</li>
+		<li><a href="/api/synset_similarity?word1=fish&word2=mammal" title="">/api/synset_similarity?word1=fish&word2=mammal</a>compare synsets, optionally by alternate comparison type and synset index</li>
+		<li><a href="/api/synset_similarity_by_name?synset1=fish.n.01&synset2=mammal.n.01" title="">/api/synset_similarity_by_name?synset1=fish.n.01&synset2=mammal.n.01</a>A better endpoint... compare synsets by synset name, optionally by alternate comparison type</li>
+		<li><a href="/api/word_stem?word=sausages" title="get stem of supplied word">/api/word_stem?word=sausages</a>get stem of supplied word, optionally providing alternate stemmer</li>
+		<li><a href="/api/is_hyponym_of?root_synset=fish.n.01&test_synset=aquatic_vertebrate.n.01" title="">/api/is_hyponym_of?root_synset=fish.n.01&test_synset=aquatic_vertebrate.n.01</a>is test synset a hyponym of root synset</li>
+		<li><a href="/api/is_hypernym_of?root_synset=fish.n.01&test_synset=aquatic_vertebrate.n.01" title="">/api/is_hypernym_of?root_synset=fish.n.01&test_synset=aquatic_vertebrate.n.01</a>is test synset a hypernym of root synset</li>
+		<li><a href="/api/is_holonym_of?root_synset=piston_ring.n.01&test_synset=piston.n.02" title="">/api/is_holonym_of?root_synset=piston_ring.n.01&test_synset=piston.n.02</a>is test synset a holonym of (the thing of which the test is a part) root synset</li>
+		<li><a href="/api/is_meronym_of?root_synset=steam_locomotive.n.01&test_synset=steam_engine.n.01" title="">/api/is_meronym_of?root_synset=steam_engine.n.01&test_synset=steam_locomotive.n.01</a>is test synset a meronym of (the thing which is contained by the test) root synset</li>
+	</ul>
+	
+	<h2>Word lists processing</h2>
+	<ul>
+		<li><a href="/api/is_stop_word?word=this" title="is supplied word a stop word">/api/is_stop_word?word=this</a>is supplied word a stop word (needs expanding to use NLTK and custom list as well as per the CLI utility)</li>
+		<li><a href="/api/get_processed_list?words=sausages,bacon,and,chips,with,black,pudding" title="optionally process supplied list for stopwords and stem">/api/get_processed_list?words=sausages,bacon,and,chips,with,black,pudding</a>optionally process supplied list for stopwords and stem</li>
+	</ul>
+	
+	<h2>Phrase compare API</h2>
+	<ul>	
+		<li><a href="/api/phrase_similarity?p1=fish%20finger%20chip%20dash%20salt&p2=two%20pint%20lager%20packet%20crisp&phrase_ct=pw" title="compare phrases pairwise by words, or by cosine similarity">/api/phrase_similarity?p1=fish%20finger%20chip%20dash%20salt&p2=two%20pint%20lager%20packet%20crisp&phrase_ct=pw</a>compare phrases pairwise by words, or by cosine similarity</li>
+	</ul>
+	
+	<h2>Similar terms</h2>
+	<p>This is an example call to the back end database to retrieve similar terms as determined by the phrase comparison method used for the job whose UUID is presented. </p>
+	<p>Note that this example may well not work if the back-end database has been rebuilt, because the UUID will not match. Therefore, there needs to be some sort of interface to retrieve a valid UUID in order to 
+	construct an API call that will return some data. Likewise, the limit value may well beed to be adjusted to increase the returned results list. Note that as the similarity score filter is lowered, the returned results will include 
+	more <b>dissimilar</b> the results are likely to be.</p>
+	<ul>
+		<li><a href="/api/get_similar_terms?term=Hardware&job_uuid=6eb73919-eb69-407f-9b00-6d22ce405ad1&limit=0.175" title="">/api/get_similar_terms?term=Hardware&job_uuid=6eb73919-eb69-407f-9b00-6d22ce405ad1&limit=0.175</a>return terms whose description is within <i>limit</i> comparison value of provided term</li>
+	</ul>
+	
+	<p>
+	See <a href="https://github.com/Kaiasm/apis/blob/master/wordnet/README.md" target="_blank" title="Wordnet tool readme">README</a> for details of all arguments these endpoints will accept.
+	</p>
+	
+	</div>
+	</body>
+	<script src="/static/engine.js" type="text/javascript"></script>
+</html>

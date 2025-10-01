@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="stylesheet" href="/static/styles.css"/>
+<meta charset="UTF-8">
+<title>Compare phrases</title>
+</head>
+<body data-js-context="phrase_compare">
+	<h1>Compare phrases</h1>
+
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/synsets">Synsets for single word</a></li>
+		<li><a href="/synset_similarity">Compare synsets for two words</a></li>
+		<li class="active"><a href="/phrase_compare">Compare phrases</a></li>
+		<li><a href="/get_related_phrases">Related phrases</a></li>
+	</ul>
+	
+	<div id="input">
+		<h2>Phrases</h2>
+		<div>
+			Phrase 1: <input type="text" name="p1" id="p1" placeholder="enter phrase 1">
+			<div class="preview_wrapper">Preview: <div class="processed_preview" id="p1_processed"></div></div>
+		</div>
+		<div>
+			Phrase 2: <input type="text" name="p2" id="p2" placeholder="enter phrase 2">
+			<div class="preview_wrapper">Preview: <div class="processed_preview" id="p2_processed"></div></div>
+		</div>
+		<h4>Pre-processing</h4>
+		<div>
+			<input type="checkbox" name="remove_stopwords" id="remove_stopwords" value="false">Do not remove stopwords
+		</div>
+		<div>
+			<div><input type="checkbox" name="perform_stem" id="perform_stem" value="true" checked="checked">Perform stemming on each word</div>
+			<div id="stemmer_types">
+				<input type="hidden" id="selected_stemmer" value="se" name="selected_stemmer">
+				<input type="radio" name="stemmer" value="se" checked="checked">Snowball (English)
+				<input type="radio" name="stemmer" value="sp">Snowball (Palmer)
+				<input type="radio" name="stemmer" value="po">Porter
+			</div>
+		</div>
+		<h4>Comparison type</h4>
+		<div>
+			<input type="radio" name="comparison_type" value="pw" checked="checked">Pair-wise (crude)
+			<input type="radio" name="comparison_type" value="cos">Cosine
+			<input type="radio" name="comparison_type" value="tf">Tensorflow
+			<input type="radio" name="comparison_type" value="rb">Roberta
+			<!-- input type="radio" name="comparison_type" value="lch" disabled="disabled">Leacock-Chodorow
+			<input type="radio" name="comparison_type" value="path" disabled="disabled">Path -->
+		</div>
+		
+		<!-- THIS IS HIDDEN ANYWAY... -->
+		<input type="button" name="destop" class="hidden" id="destop" value="Process phrases" title="Click to remove stopwords in phrases (optional)" />
+		<!-- https://stackoverflow.com/questions/23506732/compare-two-phrases-using-wordnet, - says no, but top answer suggests a couple of Python packages that might help
+		https://medium.com/@pragadesh/semantic-similarity-using-wordnet-ontology-b12219943f23,
+		https://www.codeproject.com/Articles/11835/WordNet-based-semantic-similarity-measurement - .NET examples, quite involved-->
+		<input type="button" name="compare", id="compare" value="Compare phrases" title="Intent is to compare meaning of phrases" />
+		<div class='loading_spinner' id="phrase_compare_spinner">
+			<img src="/static/images/loading-spinner.gif" class="hidden" alt="loading spinner" title="loading spinner" />
+		</div>
+	</div>
+	<div id="output">
+		
+	</div>
+	
+</body>
+<script src="/static/engine.js" type="text/javascript"></script>
+</html>

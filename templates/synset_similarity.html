@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="stylesheet" href="/static/styles.css"/>
+<meta charset="UTF-8">
+<title>Synset similarity</title>
+</head>
+<body data-js-context="synset_similarity">
+	<h1>Synset compare</h1>
+
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/synsets">Synsets for single word</a></li>
+		<li class="active"><a href="/synset_similarity">Compare synsets for two words</a></li>
+		<li><a href="/phrase_compare">Compare phrases</a></li>
+		<li><a href="/get_related_phrases">Related phrases</a></li>
+	</ul>
+	<!-- need to show synset count for each word, and the description of each synset. Then, can use the 
+	API so we can compare the indexed synsets against each other. Note - need to be able to compare synsets from SAME root word as well 
+	
+	so the UI here is two text boxes 
+		-> INITIAL list of synset NAMES for each 
+		-> with CHECKBOXES to allow us to select a pair of synsets
+		-> check for TWO being checked
+		-> on submit, show summary of comparison
+		
+		Use same URL display re write as for the individual synset
+	
+	-->
+	<h2>Enter words to compare</h2>
+	<div>
+		<!-- word 1 -->
+		<input type="text" id="word1" name="root_word1" value="" />
+		
+		<!-- word 2 -->
+		<input type="text" id="word2" name="root_word2" value="" />
+		
+		<input type="button" name="go" id="go" value="Get synsets" />
+		<div class='loading_spinner' id="get_synsets_spinner">
+			<img src="/static/images/loading-spinner.gif"  class="hidden" alt="loading spinner" title="loading spinner" />
+		</div>
+	</div>
+	<!-- comparison type, defaulting to wup ['path','wup','lch']-->
+	<h3>Comparison type</h3>
+	<div>
+		<select name="comparison_type" id="comparison_type">
+			<option value="wup" default="default">Wu-Palmer</option>
+			<option value="lch">Leacock-Chodorow</option>
+			<option value="path">Path</option>
+		</select>
+	</div>
+	
+	<!-- meaning summary of both, with checkboxes (different endpoint? arg to reduce complexity of returned data? I don't need much here, just the synset description and name) 
+	Assume the ORDER is always the same. could test the index+1 against the relevant part of teh name. There may be a method to do this as well? -->
+	<div id="results">
+		<div id="word1_results">
+			<h3>Synsets for <span>word 1</span></h3>
+			<div>
+			
+			</div>
+		</div>
+		
+		<div id="word2_results">
+			<h3>Synsets for <span>word 2</span></h3>
+			<div>
+			
+			</div>
+		</div>
+	</div>
+	<div>
+		<input type="button" name="compare" id="compare" value="Compare selected synsets" />
+		<div class='loading_spinner' id="synset_compare_spinner">
+			<img src="/static/images/loading-spinner.gif" class="hidden" alt="loading spinner" title="loading spinner" />
+		</div>
+		
+		<div id="comparison">
+		
+		</div>
+		
+	</div>
+
+	<!-- submit for selected synset compare -->
+
+
+	
+</body>
+<script src="/static/engine.js" type="text/javascript"></script>
+</html>

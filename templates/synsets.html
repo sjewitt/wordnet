@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/styles.css"/>		
+<meta charset="UTF-8">
+<title>Synsets</title>
+
+</head>
+<body data-js-context="synsets">
+	<h1>Synsets</h1>
+
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li class="active"><a href="/synsets">Synsets for single word</a></li>
+		<li><a href="/synset_similarity">Compare synsets for two words</a></li>
+		<li><a href="/phrase_compare">Compare phrases</a></li>
+		<li><a href="/get_related_phrases">Related phrases</a></li>
+	</ul>
+	
+	<div>
+		<h2>Enter word</h2>
+		<input type="text" id="root_word" name="root_word" value="" /><input type="button" name="go" id="go" value="Go" />
+		<div class='loading_spinner' id="get_synsets_spinner">
+			<img src="/static/images/loading-spinner.gif" class="hidden" alt="loading spinner" title="loading spinner" />
+		</div>
+		<h2>Results</h2>
+		<div id="results">
+		<!-- render result of AJAX call here -->
+		<!-- TODO: extract lemmas as well -->
+		</div>
+	</div>
+	
+</body>
+<script src="/static/engine.js" type="text/javascript"></script>
+</html>
